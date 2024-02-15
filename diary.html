@@ -3,16 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-fz3+UViWAYtivEKLy3vUcj7D3aGGlXLaUOhUm6Zi0ybiGiTG1avTtY1gRPZQ8U2c" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
     <title>Diary App</title>
 </head>
 <body>
     <div class="container">
-        <h1>My Diary</h1>
+       <div>
+        <nav>
+            <i class="fa-sharp fa-solid fa-book-heart"><h2>My diary</h2></i>
+            <h1>My Diary</h1>
+        </nav>
+       </div> 
+
         <div id="entry-list"></div>
         <textarea id="new-entry" placeholder="Write your entry here..."></textarea>
-        <button onclick="addEntry()">Add Entry</button>
-        <button onclick="deleteEntries()">Delete All Entries</button>
+        <div class="btns">
+            <button class="btn" onclick="addEntry()">Add Entry</button>
+            <button class="btn" onclick="deleteEntries()">Delete All Entries</button>
+        </div>
+       
     </div>
 
     <script src="script.js"></script>
