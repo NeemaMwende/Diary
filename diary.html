@@ -5,23 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-fz3+UViWAYtivEKLy3vUcj7D3aGGlXLaUOhUm6Zi0ybiGiTG1avTtY1gRPZQ8U2c" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="turn.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <title>Diary App</title>
 </head>
 <body>
     <div class="container">
-       <div>
         <nav>
-            <i class="fa-sharp fa-solid fa-book-heart"><h2>My diary</h2></i>
-            <h1>My Diary</h1>
+            <!-- <ul>
+                <li><i class="fa-sharp fa-solid fa-book-heart"><h2>My diary</h2></i></li>
+                <li> <i class="fa-duotone fa-calendar-days"></i></li>
+                <li></li>
+            </ul>   -->
         </nav>
-       </div> 
 
-        <div id="entry-list"></div>
-        <textarea id="new-entry" placeholder="Write your entry here..."></textarea>
-        <div class="btns">
-            <button class="btn" onclick="addEntry()">Add Entry</button>
-            <button class="btn" onclick="deleteEntries()">Delete All Entries</button>
-        </div>
+        <section>
+            <div class="book">
+                <div class="cover">
+                    <!-- <img src="images/diary_cover.jpg" alt="Cover of
+                    the Diary"> -->
+                    <span class="page-turn">
+                        <div id="entry-list">
+                            <textarea id="new-entry" placeholder="Write your entry here..."></textarea>
+                        </div> 
+                    </span>
+                    <span class="page-turn">
+                        <div id="entry-list">
+                            <textarea id="new-entry" placeholder="Write your entry here..."></textarea>
+                        </div> 
+                    </span>
+                    <span class="page-turn">
+                        <div id="entry-list">
+                            <textarea id="new-entry" placeholder="Write your entry here..."></textarea>
+                        </div> 
+                    </span>
+                    <span class="cover-turn"></span>
+                </div>
+            </div>    
+        </section>
+        
+        <section>
+            <div class="btns">
+                <button class="btn" onclick="addEntry()" id="submit-btn">Add Entry</button>
+                <button class="btn" onclick="deleteEntries()">Delete All Entries</button>
+            </div>
+        </section>
        
     </div>
 
