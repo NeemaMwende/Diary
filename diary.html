@@ -8,52 +8,56 @@
     <link rel="stylesheet" href="turn.css">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <title>Diary App</title>
+    
 </head>
 <body>
     <div class="container">
-        <nav>
-            <!-- <ul>
-                <li><i class="fa-sharp fa-solid fa-book-heart"><h2>My diary</h2></i></li>
-                <li> <i class="fa-duotone fa-calendar-days"></i></li>
-                <li></li>
-            </ul>   -->
+        <nav class="navbar">
+            <div class="navbar-left">
+                <i class="far fa-calendar"></i> Entry Date
+            </div>
+            <div class="navbar-right">
+                Entry #1 <!-- Update the entry number dynamically if needed -->
+            </div>
         </nav>
 
-        <section>
+        <section class="main-content">
             <div class="book">
-                <div class="cover">
-                    <!-- <img src="images/diary_cover.jpg" alt="Cover of
-                    the Diary"> -->
+                <div class="cover" id="book" onclick="toggleBook()">
                     <span class="page-turn">
-                        <div id="entry-list">
-                            <textarea id="new-entry" placeholder="Write your entry here..."></textarea>
+                        <div class="entry-list">
+                            <textarea class="new-entry" placeholder="Write your entry here..."></textarea>
                         </div> 
                     </span>
                     <span class="page-turn">
-                        <div id="entry-list">
-                            <textarea id="new-entry" placeholder="Write your entry here..."></textarea>
+                        <div class="entry-list">
+                            <textarea class="new-entry" placeholder="Write your entry here..."></textarea>
                         </div> 
                     </span>
                     <span class="page-turn">
-                        <div id="entry-list">
-                            <textarea id="new-entry" placeholder="Write your entry here..."></textarea>
+                        <div class="entry-list">
+                            <textarea class="new-entry" placeholder="Write your entry here..."></textarea>
                         </div> 
                     </span>
+                    <span class="page-turn">
+                        <div class="entry-list">
+                            <textarea class="new-entry" placeholder="Write your entry here..."></textarea>
+                        </div> 
+                    </span>
+                    <!-- Add more entries as needed -->
                     <span class="cover-turn"></span>
                 </div>
             </div>    
         </section>
         
-        <section>
-            <div class="btns">
-                <button class="btn" onclick="addEntry()" id="submit-btn">Add Entry</button>
-                <button class="btn" onclick="deleteEntries()">Delete All Entries</button>
-            </div>
-        </section>
-       
+        <footer class="footer">
+            <button class="footer-btn" onclick="goToHomePage()"><i class="fas fa-home"></i> Home</button>
+            <button class="footer-btn" onclick="editEntry()"><i class="fas fa-edit"></i> Edit</button>
+            <button class="footer-btn" onclick="previousEntry()"><i class="fas fa-chevron-left"></i> Previous</button>
+            <button class="footer-btn" onclick="nextEntry()"><i class="fas fa-chevron-right"></i> Next</button>
+        </footer>
     </div>
 
-    <script src="script.js">
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

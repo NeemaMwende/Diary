@@ -136,6 +136,7 @@ body {
     height: 50px;
     width: 100px;
     background-color: #5c5b77;
+    border-radius: 20px;
 }
 
 .btn:hover {
