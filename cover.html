@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cover</title>
+</head>
+<body>
+    <!-- Added click effect  -->
+
+<div class="book">
+    <span class="page page2 "></span>
+    <span class="page page2"></span>
+    <span class="page page2"></span>
+  
+    <span class="page page2"></span>
+    <span class="cover "></span> 
+    <span class="page "></span> 
+    <span class="cover cover1"><div id="flipped">Welcome</div></span>
+  </div>
+  
+  <button id="open">Open/Close</button>
+  <script>
+    document.getElementById('open').addEventListener( 'click',                                                
+    function(){
+        $(".page2").toggleClass('turn'); 
+        $(".cover1").toggleClass('turn');
+});
+  </script>
+</body>
+</html>
