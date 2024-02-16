@@ -3,29 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cover.css">
     <title>Cover</title>
 </head>
 <body>
     <!-- Added click effect  -->
 
 <div class="book">
-    <span class="page page2 "></span>
-    <span class="page page2"></span>
-    <span class="page page2"></span>
-  
-    <span class="page page2"></span>
-    <span class="cover "></span> 
-    <span class="page "></span> 
-    <span class="cover cover1"><div id="flipped">Welcome</div></span>
+    <span class="page page2 " id="page1" onclick="editPage('page1')">1</span>
+    <span class="page page2" id="page2" onclick="editPage('page2')">2</span>
+    <span class="page page2" id="page3" onclick="editPage('page3')">3</span>
+    <span class="page page2" id="page4" onclick="editPage('page4')">4</span>
+    <span class="page page2" id="page5" onclick="editPage('page5')">5</span>
+    <span class="page page2" id="page6" onclick="editPage('page6')">6</span>
+    <span class="cover ">7</span> 
+    <span class="cover cover1" img="/Images/cover2.jpg"><div class="title" id="flipped">MY DIARY</div></span>
   </div>
+  <button id="open" class="btn">Open/Close</button>
   
-  <button id="open">Open/Close</button>
-  <script>
-    document.getElementById('open').addEventListener( 'click',                                                
-    function(){
-        $(".page2").toggleClass('turn'); 
-        $(".cover1").toggleClass('turn');
-});
-  </script>
+
+    <script>
+        document.getElementById('open').addEventListener( 'click',function(){
+            $(".page2").toggleClass('turn'); 
+            $(".cover1").toggleClass('turn');
+          });
+        
+        let currentPage = 1;
+        
+            function editPage(pageId) {
+                const content = prompt("Edit the content of the page:", document.getElementById(pageId).innerText);
+                if (content !== null) {
+                    document.getElementById(pageId).innerText = content;
+                }
+            }
+        
+            function scrollToNextPage() {
+                if (currentPage < 3) {
+                    currentPage++;
+                    const transformValue = `translateX(${-100 * (currentPage - 1)}vw)`;
+                    document.body.style.transform = transformValue;
+                }
+            }
+        
+            function handleScroll(event) {
+                const delta = event.deltaY;
+        
+                if (delta > 0) {
+                    scrollToNextPage();
+                }
+            }
+        
+            document.addEventListener("wheel", handleScroll);
+    </script>
 </body>
 </html>
