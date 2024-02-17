@@ -29,8 +29,8 @@ body {
     left: 0;
     right: 0;
     margin: auto;
-    width: 18.5rem;
-    height: 12.5rem;
+    width: 20.5rem;
+    height: 10.5rem;
     perspective: 70rem;
     transform: rotateY(180deg);
 }

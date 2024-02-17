@@ -8,6 +8,7 @@
 
         function goToHomePage() {
             // Add code to navigate to the homepage
+            location.href="menu.html"
         }
 
         function editEntry() {

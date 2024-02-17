@@ -11,11 +11,11 @@
             margin: 50px auto;
             padding: 20px;
             border: solid thin #ddd;
-            box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+            box-shadow: 1px 1px 4px rgba(250, 246, 246, 0.1);
             background-color: rgb(214, 113, 113);
-            border-radius: 8px;
+            border-radius: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            height: 500px;
+            height: 550px;
         }
 
         .navbar {
@@ -30,16 +30,21 @@
             line-height: 20px;
         }
 
-        .navbar-left, .navbar-end {
+        .navbar-left, .navbar-right {
             flex: 1;
             justify-content: space-around;
         }
-
+        .navbar-right{
+            text-align: center;
+            justify-content: center;
+        }
         .main-content {
             /* padding: 20px; */
             /* max-width: 600px; */
-            height: 300px;
+            height: 350px;
             background-color: rgb(230, 177, 113);
+            padding: 20px;
+            border-radius: 20px;
         }
         .new-entry {
             width: 550px;
