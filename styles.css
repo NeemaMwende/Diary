@@ -28,24 +28,29 @@
             color: #fff;
         }
 
-        .navbar-left, .navbar-right {
+        .navbar-left, .navbar-right, .navbar-end {
             flex: 1;
+            justify-content: space-around;
         }
 
         .main-content {
-            padding: 20px;
-            max-width: 600px;
-            height: 250px;
+            /* padding: 20px; */
+            /* max-width: 600px; */
+            height: 300px;
             background-color: rgb(230, 177, 113);
         }
         .new-entry {
             width: 100%;
-           line-height: 20px;
+           line-height: 25px;
+           gap: 60px;
            border-radius: 30px;
+           padding-top: 10px;
         }
         .containerr {
             width: 400px;
-            height: 600px;
+            height: 700px;
+            padding: 10px;
+            /* background-color: #ddd; */
         }
 
         .footer {
