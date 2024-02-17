@@ -14,36 +14,42 @@
     <div class="container">
         <nav class="navbar">
             <div class="navbar-left">
-                <i class="far fa-calendar"></i> Entry Date
+                <input type="date" />
+                <!-- <i class="far fa-calendar">Entry Date</i>  -->
             </div>
             <div class="navbar-right">
-                Entry #1 <!-- Update the entry number dynamically if needed -->
+                Welcome<!-- Update the entry number dynamically if needed -->
+            </div>
+            <div class="navbar-right">
+                Entry 1
             </div>
         </nav>
 
         <section class="main-content">
             <div class="book">
                 <div class="cover" id="book" onclick="toggleBook()">
-                    <span class="page-turn">
-                        <div class="entry-list">
-                            <textarea class="new-entry" placeholder="Write your entry here..."></textarea>
-                        </div> 
-                    </span>
-                    <span class="page-turn">
-                        <div class="entry-list">
-                            <textarea class="new-entry" placeholder="Write your entry here..."></textarea>
-                        </div> 
-                    </span>
-                    <span class="page-turn">
-                        <div class="entry-list">
-                            <textarea class="new-entry" placeholder="Write your entry here..."></textarea>
-                        </div> 
-                    </span>
-                    <span class="page-turn">
-                        <div class="entry-list">
-                            <textarea class="new-entry" placeholder="Write your entry here..."></textarea>
-                        </div> 
-                    </span>
+                    <div class="containerr">
+                        <span class="page-turn">
+                            <div class="entry-list">
+                                <textarea class="new-entry" placeholder="Write your entry here..."></textarea>
+                            </div> 
+                        </span>
+                        <span class="page-turn">
+                            <div class="entry-list">
+                                <textarea class="new-entry" placeholder="Write your entry here..."></textarea>
+                            </div> 
+                        </span>
+                        <span class="page-turn">
+                            <div class="entry-list">
+                                <textarea class="new-entry" placeholder="Write your entry here..."></textarea>
+                            </div> 
+                        </span>
+                        <span class="page-turn">
+                            <div class="entry-list">
+                                <textarea class="new-entry" placeholder="Write your entry here..."></textarea>
+                            </div> 
+                        </span>
+                    </div>
                     <!-- Add more entries as needed -->
                     <span class="cover-turn"></span>
                 </div>
@@ -55,6 +61,7 @@
             <button class="footer-btn" onclick="editEntry()"><i class="fas fa-edit"></i> Edit</button>
             <button class="footer-btn" onclick="previousEntry()"><i class="fas fa-chevron-left"></i> Previous</button>
             <button class="footer-btn" onclick="nextEntry()"><i class="fas fa-chevron-right"></i> Next</button>
+
         </footer>
     </div>
 
