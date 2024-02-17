@@ -138,6 +138,8 @@ body {
     width: 100px;
     background-color: #5c5b77;
     border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .btn:hover {

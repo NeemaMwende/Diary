@@ -22,8 +22,9 @@
         <div class="title" id="flipped">MY DIARY</div>
     </span>
     
-    
 </div>
+<button id="open" class="btn" onclick="toggleBook()">Open</button>
+<!-- <button id="open" class="btn" onClick="location.href='index.html'">Exit</button> -->
 
 
 <script>
@@ -33,6 +34,14 @@
     }
 
     let currentPage = 1;
+    let content = pageId;
+     function editContent() {
+        if (pageid>= 1) {
+            console.log(textarea);
+        }else{
+            onscroll.scrollToNextPage();
+        }
+     }
 
     function editPage(pageId) {
         const content = prompt("Edit the content of the page:", document.getElementById(pageId).innerText);
@@ -40,6 +49,9 @@
             document.getElementById(pageId).innerText = content;
         }
     }
+           // else if (content >= 1) {
+           // document.getElementsByTagName(textarea).editPage;
+       // }else {onscroll.scrollToNextPage}
 
     function scrollToNextPage() {
         if (currentPage < 3) {
