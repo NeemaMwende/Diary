@@ -19,7 +19,7 @@
     <span class="cover" id="cover" onclick="toggleBook()">7</span> 
     <button id="open" class="btn" onclick="toggleBook()">Open</button>
     <span class="cover cover1" img="/Images/cover2.jpg">
-        <a href=""><div class="title" id="flipped" onclick="location.href='diary.html'">MY DIARY</div></a>
+        <a href="#"><div class="title" id="flipped" onclick="location.href='diary.html'">MY DIARY</div></a>
     </span>
     
 </div>
@@ -69,6 +69,28 @@
         }
     }
     document.addEventListener("wheel", handleScroll);
+
+    // to edit contents of the page
+    let isBookOpen = false;
+
+    function toggleBook() {
+        const book = document.getElementById('book');
+        isBookOpen = !isBookOpen;
+        book.classList.toggle('open', isBookOpen);
+    }
+
+    function editPage(pageId) {
+        if (isBookOpen) {
+            const content = prompt("Edit the content of the page:", document.getElementById(pageId).innerText);
+            if (content !== null) {
+                document.getElementById(pageId).innerText = content;
+            }
+        }
+    }
+
+
+
+
 </script>
 
 </body>
