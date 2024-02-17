@@ -8,94 +8,42 @@
 </head>
 <body>
     <div class="container">
-            <section class="navbar">
-                    <nav class="navbar">
-                        <div class="navbar-left">
-                            <input type="date" />
-                            <!-- <i class="far fa-calendar">Entry Date</i>  -->
-                        </div>
-                        <div class="navbar-right">
-                            What's on your mind today?<!-- Update the entry number dynamically if needed -->
-                        </div>
-                        <!-- <div class="navbar-end">
-                            Entry 1
-                        </div> -->
-                        <button class="footerbtn" type="submit" onclick="location.href='cover.html'">Exit</button>
-                    </nav>
-            </section>
+        <header class="header">
+            <h1>Diary Entries</h1>
+        </header>
 
-            <section class="main-container">
-                <!-- <div class="book"> -->
-                    <!-- <div class="cover" id="book" onclick="toggleBook()"> -->
-                        <div class="containerr" id="book" onclick="toggleBook()" >
-                            <span class="page-turn">
-                                <div class="entry-list">
-                                    <textarea class="new-entry" placeholder="Write your entry here..."></textarea>
-                                </div> 
-                            </span>
-                            <span class="page-turn">
-                                <div class="entry-list">
-                                    <textarea class="new-entry" placeholder="Write your entry here..."></textarea>
-                                </div> 
-                            </span>
-                            <span class="page-turn">
-                                <div class="entry-list">
-                                    <textarea class="new-entry" placeholder="Write your entry here..."></textarea>
-                                </div> 
-                            </span>
-                            <span class="page-turn">
-                                <div class="entry-list">
-                                    <textarea class="new-entry" placeholder="Write your entry here..."></textarea>
-                                </div> 
-                            </span>
-                            <span class="page-turn">
-                                <div class="entry-list">
-                                    <textarea class="new-entry" placeholder="Write your entry here..."></textarea>
-                                </div> 
-                            </span>
-                        </div>
-                        <div>
-                            <!-- <button class="btn btn-primary add-entry" onclick="addEntryField()">Add an Entry</button><br/><br/>
-                            <button class="addBtn" onclick="showAddForm()">+ Add an Entry</button> -->
-                                <!-- <form action="" class="form-group">
-                                    <label for="title">Your Menu</label><br>
-                                    <input type="text" name="title" id="title"><br>
-                                    <label for="body">Body:</label><br>
-                                    <textarea name="body" id="body" rows="4"></textarea><br>
-                                    <input type="submit" value="Submit">
-                                </form> -->
-                        </div>
-                        <!-- Add more entries as needed -->
-                        <span class="cover-turn">
-                
-                    <!-- </div> -->
-                <!-- </div>     -->
-
-            </section>
-
-            <section class="down-section">
-                <footer>
-                    <button class="footer-btn" onclick="goToHomePage()"><i class="fas fa-home"></i> Home</button>
-                    <button class="footer-btn" onclick="openCustomize()"><i class="fas fa-edit"></i> Customize</button>
-                    <button class="footer-btn" onclick="openStats()"><i class="fas fa-chevron-left"></i> Stats</button>
-                    <button class="footer-btn" onclick="openSettings()"><i class="fas fa-chevron-right"></i> Setting</button>
-                </footer>
-            </section>
+        <section class="main-content">
+            <ul id="entry-list">
+                <!-- Entry list will be dynamically populated here -->
+            </ul>
+        </section>
     </div>
 
     <script>
-        function goToHomePage(){
-
+        document.addEventListener('DOMContentLoaded', function () {
+            // You can fetch the entries from your data source or storage here
+            const entries = getEntries();
+        
+            const entryList = document.getElementById('entry-list');
+        
+            // Populate the entry list
+            entries.forEach((entry, index) => {
+                const entryItem = document.createElement('li');
+                entryItem.innerHTML = `<a href="index.html?entry=${index + 1}">Entry #${index + 1}</a>`;
+                entryList.appendChild(entryItem);
+            });
+        });
+        
+        function getEntries() {
+            // Replace this with your actual data retrieval logic
+            // For now, returning dummy entries
+            return [
+                { date: '2024-02-16', content: 'Entry text for Entry #1' },
+                { date: '2024-02-17', content: 'Entry text for Entry #2' },
+                // Add more entries as needed
+            ];
         }
-        function openCustomize(){
-
-        }
-        function openStats(){
-
-        }
-        function openSettings(){
-
-        }
+        
     </script>
 </body>
 </html>

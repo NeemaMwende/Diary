@@ -1,139 +1,109 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="cover.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-fz3+UViWAYtivEKLy3vUcj7D3aGGlXLaUOhUm6Zi0ybiGiTG1avTtY1gRPZQ8U2c" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="turn.css">
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <title>Cover</title>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <title>Diary App - Entry Editing</title>
 </head>
 <body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="navbar-left">
+                <input type="date" />
+            </div>
+            <div class="navbar-right">
+                What's on your mind today?
+            </div>
+            <button class="footerbtn" type="submit" onclick="saveEntry()">Save</button>
+            <button class="footerbtn" onclick="deleteEntry()">Delete</button>
+            <button class="footerbtn" onclick="goToHomePage()">Home</button>
+            <button class="footer-btn" onclick="previousEntry()"><i class="fas fa-chevron-left"></i> Previous</button>
+            <button class="footer-btn" onclick="nextEntry()"><i class="fas fa-chevron-right"></i> Next</button>
+        </nav>
 
-<div class="book">
-    <span class="page page2" id="page1" onclick="editPage('page1')">1</span>
-    <span class="page page2" id="page2" onclick="editPage('page2')">2</span>
-    <span class="page page2" id="page3" onclick="editPage('page3')">3</span>
-    <span class="page page2" id="page4" onclick="editPage('page4')">4</span>
-    <span class="page page2" id="page5" onclick="editPage('page5')">5</span>
-    <span class="page page2" id="page6" onclick="editPage('page6')">6</span>
-    <span class="cover" id="cover" onclick="toggleBook()">7</span> 
-    <button id="open" class="btn" onclick="toggleBook()">Open</button>
-    <span class="cover cover1" img="/Images/cover2.jpg">
-        <a href="#"><div class="title" id="flipped" onclick="location.href='diary.html'">MY DIARY</div></a>
-    </span>
-</div>
+        <section class="main-content">
+            <div class="containerr" id="book" onclick="toggleBook()">
+                <span class="page-turn">
+                    <div class="entry-list">
+                        <textarea class="new-entry" id="entry-text" placeholder="Write your entry here..."></textarea>
+                    </div> 
+                </span>
+            </div>
+        </section>
+    </div>
 
-<div class="container">
-    <nav class="navbar">
-        <div class="navbar-left">
-            <input type="date" />
-        </div>
-        <div class="navbar-right">
-            What's on your mind today?
-        </div>
-        <button class="footer-btn" type="submit" onclick="location.href='cover.html'">Exit</button>
-    </nav>
+    <script src="script.js">
+        let currentEntry = 1; // Initialize the current entry number
+const totalEntries = 10; // Update this with the total number of entries
 
-    <section class="main-content">
-        <div class="containerr" id="book" onclick="toggleBook()">
-            <span class="page-turn">
-                <div class="entry-list">
-                    <textarea class="new-entry" placeholder="Write your entry here..."></textarea>
-                </div> 
-            </span>
-            <span class="page-turn">
-                <div class="entry-list">
-                    <textarea class="new-entry" placeholder="Write your entry here..."></textarea>
-                </div> 
-            </span>
-            <span class="page-turn">
-                <div class="entry-list">
-                    <textarea class="new-entry" placeholder="Write your entry here..."></textarea>
-                </div> 
-            </span>
-            <span class="page-turn">
-                <div class="entry-list">
-                    <textarea class="new-entry" placeholder="Write your entry here..."></textarea>
-                </div> 
-            </span>
-            <span class="page-turn">
-                <div class="entry-list">
-                    <textarea class="new-entry" placeholder="Write your entry here..."></textarea>
-                </div> 
-            </span>
-        </div>
-    </section>
-    
-    <footer class="footer">
-        <button class="footer-btn" onclick="goToHomePage()"><i class="fas fa-home"></i> Home</button>
-        <button class="footer-btn" onclick="editEntry()"><i class="fas fa-edit"></i> Edit</button>
-        <button class="footer-btn" onclick="previousEntry()"><i class="fas fa-chevron-left"></i> Previous</button>
-        <button class="footer-btn" onclick="nextEntry()"><i class="fas fa-chevron-right"></i> Next</button>
-    </footer>
-</div>
-
-<script>
-    let currentEntry = 1; // Initialize the current entry number
-    const totalEntries = 10; // Update this with the total number of entries
-
-    function toggleBook() {
-        $(".page2").toggleClass('turn'); 
-        $(".cover1").toggleClass('turn');
-        $(".container").toggleClass('open');  // Add this line to toggle the container
-    }
-
-    function goToHomePage() {
-        // Add code to navigate to the homepage
-        location.href="cover.html";
-    }
-
-    function editEntry() {
-        // Add code to allow editing of the current entry's text
-        alert("Editing entry");
-    }
-
-    function previousEntry() {
-        // Add code to navigate to the previous entry
-        if (currentEntry > 1) {
-            currentEntry--;
-            updateEntryContent();
-        }
-    }
-
-    function nextEntry() {
-        // Add code to navigate to the next entry
-        // You can adjust the condition based on your total number of entries
-        if (currentEntry < totalEntries) {
-            currentEntry++;
-            updateEntryContent();
-        }
-    }
-
-    function updateEntryContent() {
-        // Add code to update the content of the textarea based on the current entry number
-        const entryText = getEntryTextByNumber(currentEntry);
-        document.querySelector('.new-entry').value = entryText;
-
-        // Update other elements as needed (e.g., entry number in the navbar)
-        updateNavbar();
-    }
-
-    function getEntryTextByNumber(entryNumber) {
-        // Replace this with your actual data retrieval logic
-        return `Entry text for Entry #${entryNumber}`;
-    }
-
-    function updateNavbar() {
-        // Update the navbar content based on the current entry number
-        const entryDate = getEntryDateByNumber(currentEntry);
-        document.querySelector('.navbar-right').textContent = `Entry #${currentEntry} - ${entryDate}`;
-    }
-
-    // Initial setup
+document.addEventListener('DOMContentLoaded', function () {
     updateEntryContent();
-</script>
+});
 
+function toggleBook() {
+    // Add code to toggle the book cover if needed
+}
+
+function goToHomePage() {
+    // Add code to navigate to the homepage
+    location.href = "homepage.html";
+}
+
+function saveEntry() {
+    // Add code to save the entry content
+    const entryText = document.getElementById('entry-text').value;
+    // Implement saving logic as per your requirements
+    console.log('Saving entry:', entryText);
+}
+
+function deleteEntry() {
+    // Add code to delete the current entry
+    // Implement deletion logic as per your requirements
+    console.log('Deleting entry:', currentEntry);
+}
+
+function previousEntry() {
+    // Add code to navigate to the previous entry
+    if (currentEntry > 1) {
+        currentEntry--;
+        updateEntryContent();
+    }
+}
+
+function nextEntry() {
+    // Add code to navigate to the next entry
+    // You can adjust the condition based on your total number of entries
+    if (currentEntry < totalEntries) {
+        currentEntry++;
+        updateEntryContent();
+    }
+}
+
+function updateEntryContent() {
+    // Add code to update the content of the textarea based on the current entry number
+    const entryText = getEntryTextByNumber(currentEntry);
+    document.getElementById('entry-text').value = entryText;
+
+    // Update other elements as needed (e.g., entry number in the navbar)
+    updateNavbar();
+}
+
+function getEntryTextByNumber(entryNumber) {
+    // Replace this with your actual data retrieval logic
+    return `Entry text for Entry #${entryNumber}`;
+}
+
+function updateNavbar() {
+    // Add code to update the navbar content based on the current entry number
+    // You can customize this based on your layout
+    const entryNumberElement = document.querySelector('.navbar-right');
+    entryNumberElement.textContent = `Entry #${currentEntry}`;
+}
+
+    </script>
 </body>
-</html> -->
+</html>
