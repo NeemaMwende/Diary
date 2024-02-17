@@ -2,6 +2,7 @@ body {
     background-color: #4F4E68;
     margin: 0;
     overflow: hidden;
+    padding: 50px;
 }
 
 .cover:hover:after {
