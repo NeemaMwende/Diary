@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-fz3+UViWAYtivEKLy3vUcj7D3aGGlXLaUOhUm6Zi0ybiGiTG1avTtY1gRPZQ8U2c" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="turn.css">
+    <!-- <link rel="stylesheet" href="turn.css"> -->
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <title>Diary App - Entry Editing</title>
 </head>
@@ -18,21 +18,64 @@
             <div class="navbar-right">
                 What's on your mind today?
             </div>
+        </nav>
+
+           <!-- <section class="main-content">
+            <!-- <div class="book"> -->
+                <!-- <div class="cover" id="book" onclick="toggleBook()"> -->
+                    <div class="containerr" id="book" onclick="toggleBook()" >
+                        <span class="page-turn">
+                            <div class="entry-list">
+                                <textarea class="new-entry" placeholder="Write your entry here..."></textarea>
+                            </div> 
+                        </span>
+                        <span class="page-turn">
+                            <div class="entry-list">
+                                <textarea class="new-entry" placeholder="Write your entry here..."></textarea>
+                            </div> 
+                        </span>
+                        <span class="page-turn">
+                            <div class="entry-list">
+                                <textarea class="new-entry" placeholder="Write your entry here..."></textarea>
+                            </div> 
+                        </span>
+                        <span class="page-turn">
+                            <div class="entry-list">
+                                <textarea class="new-entry" placeholder="Write your entry here..."></textarea>
+                            </div> 
+                        </span>
+                        <span class="page-turn">
+                            <div class="entry-list">
+                                <textarea class="new-entry" placeholder="Write your entry here..."></textarea>
+                            </div> 
+                        </span>
+                    </div>
+                    <div>
+                        <!-- <button class="btn btn-primary add-entry" onclick="addEntryField()">Add an Entry</button><br/><br/>
+                        <button class="addBtn" onclick="showAddForm()">+ Add an Entry</button> -->
+                            <!-- <form action="" class="form-group">
+                                <label for="title">Your Menu</label><br>
+                                <input type="text" name="title" id="title"><br>
+                                <label for="body">Body:</label><br>
+                                <textarea name="body" id="body" rows="4"></textarea><br>
+                                <input type="submit" value="Submit">
+                            </form> -->
+                    </div>
+                    <!-- Add more entries as needed -->
+                    <span class="cover-turn">
+            
+                <!-- </div> -->
+            <!-- </div>     -->
+        </section> -->
+
+        <section>
+            <footer>
             <button class="footerbtn" type="submit" onclick="saveEntry()">Save</button>
             <button class="footerbtn" onclick="deleteEntry()">Delete</button>
             <button class="footerbtn" onclick="goToHomePage()">Home</button>
             <button class="footer-btn" onclick="previousEntry()"><i class="fas fa-chevron-left"></i> Previous</button>
             <button class="footer-btn" onclick="nextEntry()"><i class="fas fa-chevron-right"></i> Next</button>
-        </nav>
-
-        <section class="main-content">
-            <div class="containerr" id="book" onclick="toggleBook()">
-                <span class="page-turn">
-                    <div class="entry-list">
-                        <textarea class="new-entry" id="entry-text" placeholder="Write your entry here..."></textarea>
-                    </div> 
-                </span>
-            </div>
+            </footer>
         </section>
     </div>
 

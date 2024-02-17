@@ -14,7 +14,7 @@
     <div class="container">
         <nav class="navbar">
             <div class="navbar-left">
-                <input type="date" />
+                <input type="date" class="date"/>
                 <!-- <i class="far fa-calendar">Entry Date</i>  -->
             </div>
             <div class="navbar-right">
@@ -27,56 +27,19 @@
         </nav>
 
         <section class="main-content">
-            <!-- <div class="book"> -->
-                <!-- <div class="cover" id="book" onclick="toggleBook()"> -->
-                    <div class="containerr" id="book" onclick="toggleBook()" >
-                        <span class="page-turn">
-                            <div class="entry-list">
-                                <textarea class="new-entry" placeholder="Write your entry here..."></textarea>
-                            </div> 
-                        </span>
-                        <span class="page-turn">
-                            <div class="entry-list">
-                                <textarea class="new-entry" placeholder="Write your entry here..."></textarea>
-                            </div> 
-                        </span>
-                        <span class="page-turn">
-                            <div class="entry-list">
-                                <textarea class="new-entry" placeholder="Write your entry here..."></textarea>
-                            </div> 
-                        </span>
-                        <span class="page-turn">
-                            <div class="entry-list">
-                                <textarea class="new-entry" placeholder="Write your entry here..."></textarea>
-                            </div> 
-                        </span>
-                        <span class="page-turn">
-                            <div class="entry-list">
-                                <textarea class="new-entry" placeholder="Write your entry here..."></textarea>
-                            </div> 
-                        </span>
-                    </div>
-                    <div>
-                        <!-- <button class="btn btn-primary add-entry" onclick="addEntryField()">Add an Entry</button><br/><br/>
-                        <button class="addBtn" onclick="showAddForm()">+ Add an Entry</button> -->
-                            <!-- <form action="" class="form-group">
-                                <label for="title">Your Menu</label><br>
-                                <input type="text" name="title" id="title"><br>
-                                <label for="body">Body:</label><br>
-                                <textarea name="body" id="body" rows="4"></textarea><br>
-                                <input type="submit" value="Submit">
-                            </form> -->
-                    </div>
-                    <!-- Add more entries as needed -->
-                    <span class="cover-turn">
-            
-                <!-- </div> -->
-            <!-- </div>     -->
+            <div class="containerr" id="book" onclick="toggleBook()">
+                <span class="page-turn">
+                    <div class="entry-list">
+                        <textarea class="new-entry" id="entry-text" placeholder="Write your entry here..."></textarea>
+                    </div> 
+                </span>
+            </div>
         </section>
-        
+       
         <footer class="footer">
-            <button class="footer-btn" onclick="goToHomePage()"><i class="fas fa-home"></i> Home</button>
-            <button class="footer-btn" onclick="editEntry()"><i class="fas fa-edit"></i> Edit</button>
+            <button class="footerbtn" type="submit" onclick="saveEntry()">Save</button>
+            <button class="footerbtn" onclick="deleteEntry()">Delete</button>
+            <button class="footerbtn" onclick="goToHomePage()">Home</button>
             <button class="footer-btn" onclick="previousEntry()"><i class="fas fa-chevron-left"></i> Previous</button>
             <button class="footer-btn" onclick="nextEntry()"><i class="fas fa-chevron-right"></i> Next</button>
         </footer>
@@ -87,20 +50,33 @@
         
         let currentEntry = 1; // Initialize the current entry number
         const totalEntries = 10; // Update this with the total number of entries
-
+        
+        document.addEventListener('DOMContentLoaded', function () {
+            updateEntryContent();
+        });
+        
         function toggleBook() {
             // Add code to toggle the book cover if needed
         }
-
+        
         function goToHomePage() {
             // Add code to navigate to the homepage
-            location.href="menu.html"
+            location.href = "homepage.html";
         }
-
-        function editEntry() {
-            // Add code to allow editing of the current entry's text
+        
+        function saveEntry() {
+            // Add code to save the entry content
+            const entryText = document.getElementById('entry-text').value;
+            // Implement saving logic as per your requirements
+            console.log('Saving entry:', entryText);
         }
-
+        
+        function deleteEntry() {
+            // Add code to delete the current entry
+            // Implement deletion logic as per your requirements
+            console.log('Deleting entry:', currentEntry);
+        }
+        
         function previousEntry() {
             // Add code to navigate to the previous entry
             if (currentEntry > 1) {
@@ -108,7 +84,7 @@
                 updateEntryContent();
             }
         }
-
+        
         function nextEntry() {
             // Add code to navigate to the next entry
             // You can adjust the condition based on your total number of entries
@@ -117,38 +93,28 @@
                 updateEntryContent();
             }
         }
-
+        
         function updateEntryContent() {
             // Add code to update the content of the textarea based on the current entry number
             const entryText = getEntryTextByNumber(currentEntry);
-            document.querySelector('.new-entry').value = entryText;
-
+            document.getElementById('entry-text').value = entryText;
+        
             // Update other elements as needed (e.g., entry number in the navbar)
             updateNavbar();
         }
-
+        
         function getEntryTextByNumber(entryNumber) {
-            // Add code to fetch the entry text from your data structure or storage
             // Replace this with your actual data retrieval logic
             return `Entry text for Entry #${entryNumber}`;
         }
-
+        
         function updateNavbar() {
             // Add code to update the navbar content based on the current entry number
-            const entryDate = getEntryDateByNumber(currentEntry);
-            document.querySelector('#entryDate').textContent = entryDate;
-            document.querySelector('#entryNumber').textContent = `Entry #${currentEntry}`;
+            // You can customize this based on your layout
+            const entryNumberElement = document.querySelector('.navbar-right');
+            entryNumberElement.textContent = `Entry #${currentEntry}`;
         }
-
-        function getEntryDateByNumber(entryNumber) {
-            // Add code to fetch the entry date from your data structure or storage
-            // Replace this with your actual data retrieval logic
-            return 'Entry Date';
-        }
-
-        // Initial setup
-        updateEntryContent();
-
-    </script>
+        
+            </script>
 </body>
 </html>
