@@ -17,11 +17,14 @@
     <span class="page page2" id="page5" onclick="editPage('page5')">5</span>
     <span class="page page2" id="page6" onclick="editPage('page6')">6</span>
     <span class="cover" id="cover" onclick="toggleBook()">7</span> 
+    <button id="open" class="btn" onclick="toggleBook()">Open</button>
     <span class="cover cover1" img="/Images/cover2.jpg">
         <div class="title" id="flipped">MY DIARY</div>
     </span>
+    
+    
 </div>
-<button id="open" class="btn" onclick="toggleBook()">Open</button>
+
 
 <script>
     function toggleBook() {
@@ -54,7 +57,6 @@
         }
     }
     document.addEventListener("wheel", handleScroll);
-    
 </script>
 
 </body>
