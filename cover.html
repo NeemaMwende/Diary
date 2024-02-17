@@ -27,7 +27,7 @@
 <!-- <button id="open" class="btn" onClick="location.href='index.html'">Exit</button> -->
 
 
-<script>
+<!-- <script>
     function toggleBook() {
         $(".page2").toggleClass('turn'); 
         $(".cover1").toggleClass('turn');
@@ -87,11 +87,64 @@
             }
         }
     }
+</script> -->
+<script>
+    let currentPage = 1;
+let content = pageId;
 
+function editContent() {
+    if (currentPage >= 1) {
+        const content = prompt("Edit the content of the page:", document.getElementById(content).innerText);
+        if (content !== null) {
+            document.getElementById(content).innerText = content;
+        }
+    } else {
+        scrollToNextPage();
+    }
+}
 
+function scrollToNextPage() {
+    if (currentPage < 3) {
+        currentPage++;
+        const transformValue = `translateX(${-100 * (currentPage - 1)}vw)`;
+        document.body.style.transform = transformValue;
+    }
+}
 
+function handleScroll(event) {
+    const delta = event.deltaY;
 
+    if (delta > 0) {
+        scrollToNextPage();
+    }
+}
+
+document.addEventListener("wheel", handleScroll);
+
+// to edit contents of the page
+let isBookOpen = false;
+
+function toggleBook() {
+    const book = document.getElementById('book');
+    isBookOpen = !isBookOpen;
+    book.classList.toggle('open', isBookOpen);
+
+    if (isBookOpen) {
+        editContent();
+    }
+}
+
+function editPage(pageId) {
+    if (isBookOpen) {
+        const content = prompt("Edit the content of the page:", document.getElementById(pageId).innerText);
+        if (content !== null) {
+            document.getElementById(pageId).innerText = content;
+        }
+    }
+}
+
+// Add this line to handle the click event on the cover
+document.getElementById('cover').addEventListener('click', toggleBook);
 </script>
-
 </body>
 </html>
