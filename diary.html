@@ -49,7 +49,7 @@
     <script src="script.js">
         
         let currentEntry = 1; // Initialize the current entry number
-        const totalEntries = 10; // Update this with the total number of entries
+        const totalEntries = 100; // Update this with the total number of entries
         
         document.addEventListener('DOMContentLoaded', function () {
             updateEntryContent();
@@ -67,9 +67,29 @@
         function saveEntry() {
             // Add code to save the entry content
             const entryText = document.getElementById('entry-text').value;
+        
+            // Update the entry list on the homepage
+            updateHomepageEntryList();
+        
             // Implement saving logic as per your requirements
             console.log('Saving entry:', entryText);
         }
+        
+        function updateHomepageEntryList() {
+            // You can fetch the entries from your data source or storage here
+            const entries = getEntries();
+        
+            const entryList = document.getElementById('entry-list');
+            entryList.innerHTML = ""; // Clear existing entries
+        
+            // Populate the updated entry list
+            entries.forEach((entry, index) => {
+                const entryItem = document.createElement('li');
+                entryItem.innerHTML = `<a href="index.html?entry=${index + 1}">Entry #${index + 1}</a>`;
+                entryList.appendChild(entryItem);
+            });
+        }
+        
         
         function deleteEntry() {
             // Add code to delete the current entry

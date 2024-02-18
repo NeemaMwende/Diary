@@ -9,14 +9,22 @@
 <body>
     <div class="container">
         <header class="header">
-            <h1>Diary Entries</h1>
+            <h1>Welcome Back! We missed you</h1>
         </header>
 
         <section class="main-content">
-            <ul id="entry-list">
+            <ol id="entry-list">
                 <!-- Entry list will be dynamically populated here -->
-            </ul>
+            </ol>
         </section>
+
+        <footer class="footer">
+            <button class="footerbtn" type="submit" onclick="saveEntry()">Save</button>
+            <button class="footerbtn" onclick="deleteEntry()">Delete</button>
+            <button class="footerbtn" onclick="goToHomePage()">Home</button>
+            <button class="footer-btn" onclick="previousEntry()"><i class="fas fa-chevron-left"></i> Previous</button>
+            <button class="footer-btn" onclick="nextEntry()"><i class="fas fa-chevron-right"></i> Next</button>
+        </footer>
     </div>
 
     <script>
@@ -25,7 +33,8 @@
             const entries = getEntries();
         
             const entryList = document.getElementById('entry-list');
-        
+            entryList.innerHTML = "";
+
             // Populate the entry list
             entries.forEach((entry, index) => {
                 const entryItem = document.createElement('li');

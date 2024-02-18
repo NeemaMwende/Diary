@@ -45,6 +45,7 @@ body {
     background-color: rgb(230, 177, 113);
     padding: 20px;
     border-radius: 20px;
+    line-height: 20px;
 }
 .new-entry {
     width: 550px;
@@ -68,8 +69,11 @@ body {
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
 }
-
-.footer-btn {
+.footer-section{
+    padding: 40px;
+    margin: 10px;
+}
+ .ftr-btn {
     padding: 8px 16px;
     background-color: #fff;
     color: #4caf50;
@@ -78,15 +82,27 @@ body {
     cursor: pointer;
     width: 100px;
 }
-.footerbtn{
-width: 70px;
+.footer-section{
+width: 200px;
+display: flex;
+justify-content: center;
+align-items: center;
 border-radius: 10px;
 justify-content: center;
 height: 40px;
-background-color: red;
+background-color: rgb(197, 76, 76);
 }
-
-
+/* .ftr{ 
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+.ftr-btn{
+    width: 100px;
+    height: 50px;
+    border-radius: 20px;
+    background-color: rgb(197, 76, 76);
+} */
 
 
 
