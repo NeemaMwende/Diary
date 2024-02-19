@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="menu.css">
     <script src="menu.js"></script>
+    <script src="shared.js"></script>
     <title>Menu</title>
 </head>
 <body>
@@ -14,10 +15,11 @@
         </header>
 
         <section class="main-content">
-            <ol id="entry-list">
-                <!-- Entry list will be dynamically populated here -->
-            </ol>
+            <div id="entry-list">
+                <!-- Entries will be dynamically populated here -->
+            </div>
         </section>
+        
 
         <footer class="footer">
             <button class="footerbtn" type="submit" onclick="location.href='cover.html'">Home</button>
@@ -52,6 +54,35 @@
         <button id="cancel-settings" class="hidden" onclick="cancelSettings()">Cancel</button>
     </div>
     <!-- End of settings code -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            displayEntries();
+        });
+
+        function displayEntries() {
+            const entries = getEntries();
+
+            const entryList = document.getElementById('entry-list');
+            entryList.innerHTML = "";
+
+            // Populate the entry list in descending order
+            for (let i = entries.length - 1; i >= 0; i--) {
+                const entryItem = document.createElement('div');
+                entryItem.classList.add('entry-item');
+                entryItem.innerHTML = `<p>${entries[i].date}</p><p>${entries[i].content}</p>`;
+                entryItem.addEventListener('click', function () {
+                    openDiaryEntry(entries[i]);
+                });
+                entryList.appendChild(entryItem);
+            }
+        }
+
+        function openDiaryEntry(entry) {
+            // Redirect to diary.html with the selected entry
+            window.location.href = `diary.html?date=${entry.date}&content=${encodeURIComponent(entry.content)}`;
+        }
+    </script>
 
 </body>
 </html>

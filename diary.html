@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="turn.css">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <script src="shared.js"></script>
     <title>Diary App</title>
     
 </head>
@@ -30,14 +31,23 @@
             <div class="containerr" id="book" onclick="toggleBook()">
                 <span class="page-turn">
                     <div class="entry-list">
-                        <textarea class="new-entry" id="entry-text" placeholder="Write your entry here..."></textarea>
+                        <!-- <textarea  id="entry-text" placeholder="Write your entry here..."></textarea> -->
+                        <textarea id="entryText" class="new-entry" placeholder="Enter your diary entry"></textarea>
+                        <!-- <button onclick="saveDiaryEntry()">Save Entry</button> -->
+
+                        <script>
+                            function saveDiaryEntry() {
+                                const entryText = document.getElementById('entryText').value;
+                                saveEntry(entryText);
+                            }
+                        </script>
                     </div> 
                 </span>
             </div>
         </section>
        
         <footer class="footer">
-            <button class="footerbtn" type="submit" onclick="saveEntry()">Save</button>
+            <button class="footerbtn" type="submit" onclick="saveDiaryEntry()">Save</button>
             <button class="footerbtn" onclick="deleteEntry()">Delete</button>
             <button class="footerbtn" onclick="goToHomePage()">Home</button>
             <button class="footer-btn" onclick="previousEntry()"><i class="fas fa-chevron-left"></i> Previous</button>
