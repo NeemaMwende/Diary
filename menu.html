@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <script src="menu.js">window.onload = function(){init();}</script>
+    <script src="menu.js"></script>
     <title>Menu</title>
 </head>
 <body>
@@ -22,15 +22,16 @@
         <footer class="footer">
             <button class="footerbtn" type="submit" onclick="location.href='cover.html'">Home</button>
             <button class="footerbtn" onclick="userCustomize()">Customize</button>
-            <button class="footerbtn" onclick="opeStatts()">Stats</button>
-            <button class="footer-btn" onclick="applySettings()" id="open-settings">
-                <i class="fas fa-chevron-left"></i> Settings</button>
+            <button class="footerbtn" onclick="openStats()">Stats</button>
+            <button class="footer-btn" onclick="toggleSettingsMenu()" id="open-settings">
+                <i class="fas fa-chevron-left"></i> Settings
+            </button>
             <!-- <button class="footer-btn" onclick="nextEntry()"><i class="fas fa-chevron-right"></i> Next</button> -->
         </footer>
     </div>
-    
+
     <!-- settings code -->
-      <div id="settings-menu" class="hidden">
+    <div id="settings-menu" class="settings-menu hidden">
         <h2>Settings</h2>
         <label for="num-results">Number of Entries:</label>
         <input type="number" id="num-results" value="100">
@@ -39,7 +40,7 @@
         <select id="display-type">
           <option value="table">Table</option>
           <option value="graph">Graph</option>
-          ...
+          <!-- ... other options ... -->
         </select>
         <br>
         <label for="use-zoom">Use Zoom:</label>
@@ -48,9 +49,10 @@
         <label for="zoom-factor">Zoom Factor (%):</label>
         <input type="range" id="zoom-factor" min="50" max="200" value="100">
         <br>
-        <button id="save-settings">Save</button>
-        <button id="cancel-settings" class="hidden">Cancel</button>
-      </div>
-      
+        <button id="save-settings" onclick="saveSettings()">Save</button>
+        <button id="cancel-settings" class="hidden" onclick="cancelSettings()">Cancel</button>
+    </div>
+    <!-- End of settings code -->
+
 </body>
 </html>

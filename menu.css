@@ -92,20 +92,27 @@ justify-content: center;
 height: 40px;
 background-color: rgb(197, 76, 76);
 }
-/* .ftr{ 
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-}
-.ftr-btn{
-    width: 100px;
-    height: 50px;
-    border-radius: 20px;
-    background-color: rgb(197, 76, 76);
-} */
 
+/* settings code */
+/* ... your existing styles ... */
 
-
+.settings-menu {
+    position: fixed;
+    top: 0;
+    right: -300px; /* initially off-screen */
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: right 0.3s ease-in-out;
+  }
+  
+  .settings-menu h2 {
+    margin-top: 20px;
+  }
+  
+  /* ... your existing styles ... */
+  
 
 
 

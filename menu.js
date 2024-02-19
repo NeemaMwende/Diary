@@ -23,55 +23,31 @@ function getEntries() {
     ];
 }
 
-<!-- //settings code -->
-const settings = {
-    numResults: 100,
-    displayType: 'table',
-    useZoom: true,
-    zoomFactor: 100,
-    ...
-  };
-  
-  function updateNumResults(num) {
-    settings.numResults = num;
-    applySettings();
-  }
-  
-  function updateDisplayType(type) {
-    settings.displayType = type;
-    applySettings();
-  }
-  
-  function updateUseZoom(zoom) {
-    settings.useZoom = zoom;
-    applySettings();
-  }
-  
-  function updateZoomFactor(factor) {
-    settings.zoomFactor = factor;
-    applySettings();
-  }
-  
-  function applySettings() {
-    // Apply settings to the app
-    // For example, fetch data from the database with new number of results
-    // Manipulate DOM elements based on display type
-    // Apply zoom factor to relevant elements
-  }
+//settings code
+function toggleSettingsMenu() {
+  var settingsMenu = document.getElementById('settings-menu');
+  settingsMenu.classList.toggle('hidden');
+  settingsMenu.classList.toggle('slide-in');
+}
 
-    function openSettings()
-    {
-        document.getElementById('open-settings').addEventListener('click', () => {
-        document.getElementById('settings-menu').classList.remove('hidden');
-        });
-        document.getElementById('cancel-settings').addEventListener('click', () => {
-        document.getElementById('settings-menu').classList.add('hidden');
-        });
-        document.getElementById('save-settings').addEventListener('click', () => {
-        applySettings();
-        document.getElementById('settings-menu').classList.add('hidden');
-        });
-        // Initialize settings with saved values or defaults
-        applySettings(); 
-    }
-    
+function saveSettings() {
+  // Implement save settings logic
+  toggleSettingsMenu(); // Close the settings menu after saving
+}
+
+function cancelSettings() {
+  // Implement cancel settings logic
+  toggleSettingsMenu(); // Close the settings menu after canceling
+}
+
+function openStats() {
+  // Implement open stats logic
+}
+
+function userCustomize() {
+  // Implement user customize logic
+}
+
+function init() {
+  // Your initialization logic goes here
+}
