@@ -19,13 +19,51 @@
         </section>
 
         <footer class="footer">
-            <button class="footerbtn" type="submit" onclick="saveEntry()">Save</button>
-            <button class="footerbtn" onclick="deleteEntry()">Delete</button>
-            <button class="footerbtn" onclick="goToHomePage()">Home</button>
-            <button class="footer-btn" onclick="previousEntry()"><i class="fas fa-chevron-left"></i> Previous</button>
-            <button class="footer-btn" onclick="nextEntry()"><i class="fas fa-chevron-right"></i> Next</button>
+            <button class="footerbtn" type="submit" onclick="location.href='cover.html'">Home</button>
+            <button class="footerbtn" onclick="userCustomize()">Customize</button>
+            <button class="footerbtn" onclick="opeStatts()">Stats</button>
+            <button class="footer-btn" onclick="openSettings()" id="open-settings">
+                <i class="fas fa-chevron-left"></i> Settings</button>
+            <!-- <button class="footer-btn" onclick="nextEntry()"><i class="fas fa-chevron-right"></i> Next</button> -->
         </footer>
     </div>
+    
+      <div id="settings-menu" class="hidden">
+        <h2>Settings</h2>
+        <label for="num-results">Number of Entries:</label>
+        <input type="number" id="num-results" value="100">
+        <br>
+        <label for="display-type">Display Type:</label>
+        <select id="display-type">
+          <option value="table">Table</option>
+          <option value="graph">Graph</option>
+          ...
+        </select>
+        <br>
+        <label for="use-zoom">Use Zoom:</label>
+        <input type="checkbox" id="use-zoom">
+        <br>
+        <label for="zoom-factor">Zoom Factor (%):</label>
+        <input type="range" id="zoom-factor" min="50" max="200" value="100">
+        <br>
+        <button id="save-settings">Save</button>
+        <button id="cancel-settings" class="hidden">Cancel</button>
+      </div>
+      <script src="settings.js"></script>
+      <script>
+        document.getElementById('open-settings').addEventListener('click', () => {
+          document.getElementById('settings-menu').classList.remove('hidden');
+        });
+        document.getElementById('cancel-settings').addEventListener('click', () => {
+          document.getElementById('settings-menu').classList.add('hidden');
+        });
+        document.getElementById('save-settings').addEventListener('click', () => {
+          applySettings();
+          document.getElementById('settings-menu').classList.add('hidden');
+        });
+        // Initialize settings with saved values or defaults
+        applySettings();
+      </script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -53,6 +91,42 @@
             ];
         }
         
+        //settings code
+        const settings = {
+            numResults: 10,
+            displayType: 'table',
+            useZoom: true,
+            zoomFactor: 100,
+            ...
+          };
+          
+          function updateNumResults(num) {
+            settings.numResults = num;
+            applySettings();
+          }
+          
+          function updateDisplayType(type) {
+            settings.displayType = type;
+            applySettings();
+          }
+          
+          function updateUseZoom(zoom) {
+            settings.useZoom = zoom;
+            applySettings();
+          }
+          
+          function updateZoomFactor(factor) {
+            settings.zoomFactor = factor;
+            applySettings();
+          }
+          
+          function applySettings() {
+            // Apply settings to the app
+            // For example, fetch data from the database with new number of results
+            // Manipulate DOM elements based on display type
+            // Apply zoom factor to relevant elements
+            ...
+          }
     </script>
 </body>
 </html>
