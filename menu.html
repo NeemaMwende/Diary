@@ -28,6 +28,7 @@
         </footer>
     </div>
     
+    <!-- settings code -->
       <div id="settings-menu" class="hidden">
         <h2>Settings</h2>
         <label for="num-results">Number of Entries:</label>
@@ -49,21 +50,7 @@
         <button id="save-settings">Save</button>
         <button id="cancel-settings" class="hidden">Cancel</button>
       </div>
-      <script src="settings.js"></script>
-      <script>
-        document.getElementById('open-settings').addEventListener('click', () => {
-          document.getElementById('settings-menu').classList.remove('hidden');
-        });
-        document.getElementById('cancel-settings').addEventListener('click', () => {
-          document.getElementById('settings-menu').classList.add('hidden');
-        });
-        document.getElementById('save-settings').addEventListener('click', () => {
-          applySettings();
-          document.getElementById('settings-menu').classList.add('hidden');
-        });
-        // Initialize settings with saved values or defaults
-        applySettings();
-      </script>
+      
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -93,7 +80,7 @@
         
         //settings code
         const settings = {
-            numResults: 10,
+            numResults: 100,
             displayType: 'table',
             useZoom: true,
             zoomFactor: 100,
@@ -127,6 +114,22 @@
             // Apply zoom factor to relevant elements
             ...
           }
+          
+            function openSettings()
+            {
+                document.getElementById('open-settings').addEventListener('click', () => {
+                document.getElementById('settings-menu').classList.remove('hidden');
+                });
+                document.getElementById('cancel-settings').addEventListener('click', () => {
+                document.getElementById('settings-menu').classList.add('hidden');
+                });
+                document.getElementById('save-settings').addEventListener('click', () => {
+                applySettings();
+                document.getElementById('settings-menu').classList.add('hidden');
+                });
+                // Initialize settings with saved values or defaults
+                applySettings(); 
+            }
     </script>
 </body>
 </html>
