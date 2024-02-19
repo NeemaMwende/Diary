@@ -15,8 +15,13 @@
         </header>
 
         <section class="main-content">
-            <div id="entry-list">
+            <div class="text-box" id="entry-list">
                 <!-- Entries will be dynamically populated here -->
+            </div>
+
+             <!-- Context menu for right-click -->
+             <div id="context-menu" class="context-menu">
+                <button onclick="deleteEntry()">Delete Entry</button>
             </div>
         </section>
         
@@ -70,18 +75,68 @@
             for (let i = entries.length - 1; i >= 0; i--) {
                 const entryItem = document.createElement('div');
                 entryItem.classList.add('entry-item');
-                entryItem.innerHTML = `<p>${entries[i].date}</p><p>${entries[i].content}</p>`;
-                entryItem.addEventListener('click', function () {
-                    openDiaryEntry(entries[i]);
+                entryItem.innerHTML = `
+                    <p>${entries[i].date}</p>
+                    <p class="entry-text" onclick="openDiaryEntry(${i})">${truncateText(entries[i].content)}</p>
+                `;
+                entryItem.addEventListener('contextmenu', function (event) {
+                    event.preventDefault();
+                    showContextMenu(event, i);
                 });
                 entryList.appendChild(entryItem);
             }
         }
 
-        function openDiaryEntry(entry) {
+        function openDiaryEntry(index) {
+            const entries = getEntries();
             // Redirect to diary.html with the selected entry
-            window.location.href = `diary.html?date=${entry.date}&content=${encodeURIComponent(entry.content)}`;
+            window.location.href = `diary.html?date=${entries[index].date}&content=${encodeURIComponent(entries[index].content)}`;
         }
+
+        function truncateText(text) {
+            const maxLength = 50;
+            return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
+        }
+
+        // Function to show the context menu
+        function showContextMenu(event, index) {
+            const contextMenu = document.getElementById('context-menu');
+            contextMenu.style.display = 'block';
+            contextMenu.style.left = `${event.clientX}px`;
+            contextMenu.style.top = `${event.clientY}px`;
+
+            // Set a reference to the current entry index
+            contextMenu.setAttribute('data-entry-index', index);
+
+            // Close the context menu when clicking outside
+            document.addEventListener('click', hideContextMenu);
+        }
+
+        // Function to hide the context menu
+        function hideContextMenu() {
+            const contextMenu = document.getElementById('context-menu');
+            contextMenu.style.display = 'none';
+
+            // Remove the click event listener
+            document.removeEventListener('click', hideContextMenu);
+        }
+
+        // Function to delete the selected entry
+        function deleteEntry() {
+            const contextMenu = document.getElementById('context-menu');
+            const index = contextMenu.getAttribute('data-entry-index');
+
+            if (index !== null) {
+                const entries = getEntries();
+                entries.splice(index, 1);
+                localStorage.setItem('entries', JSON.stringify(entries));
+                displayEntries(); // Refresh the entry list
+            }
+
+            hideContextMenu();
+        }
+
+        // Your existing functions (saveSettings, cancelSettings, toggleSettingsMenu, userCustomize, openStats) go here...
     </script>
 
 </body>
