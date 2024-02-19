@@ -22,7 +22,7 @@
             <button class="footerbtn" type="submit" onclick="location.href='cover.html'">Home</button>
             <button class="footerbtn" onclick="userCustomize()">Customize</button>
             <button class="footerbtn" onclick="opeStatts()">Stats</button>
-            <button class="footer-btn" onclick="openSettings()" id="open-settings">
+            <button class="footer-btn" onclick="applySettings()" id="open-settings">
                 <i class="fas fa-chevron-left"></i> Settings</button>
             <!-- <button class="footer-btn" onclick="nextEntry()"><i class="fas fa-chevron-right"></i> Next</button> -->
         </footer>
@@ -114,7 +114,7 @@
             // Apply zoom factor to relevant elements
             ...
           }
-          
+
             function openSettings()
             {
                 document.getElementById('open-settings').addEventListener('click', () => {
