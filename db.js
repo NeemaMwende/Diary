@@ -16,11 +16,28 @@
 //     console.log("entries");
 // })
 
-// const sqlite3 = require('sqlite3').verbose();
+// db.js
+
 const mysql = require("mysql");
-const db = new mysql.Database('entries.db');
+
+const db = mysql.createConnection({
+    host: 'localhost',
+    database: 'diary',
+    user: 'root',
+    password: 'Mikaelson@12.'
+});
+
+// Connect to MySQL
+db.connect(err => {
+    if (err) {
+        console.error('Error connecting to MySQL:', err.message);
+    } else {
+        console.log('Connected to MySQL');
+    }
+});
 
 module.exports = db;
+
 
 
 

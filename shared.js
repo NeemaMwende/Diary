@@ -1,64 +1,43 @@
+// // shared.js
+
+// // Function to save an entry to local storage with the current date
+// function saveEntry(entryText) {
+//     const currentDate = new Date().toLocaleDateString();
+//     const entry = { date: currentDate, content: entryText };
+
+//     // Get existing entries or initialize an empty array
+//     const existingEntries = JSON.parse(localStorage.getItem('entries')) || [];
+
+//     // Add the new entry to the array
+//     existingEntries.push(entry);
+
+//     // Save the updated entries array to local storage
+//     localStorage.setItem('entries', JSON.stringify(existingEntries));
+// }
+
+// // Function to retrieve all entries from local storage
+// function getEntries() {
+//     return JSON.parse(localStorage.getItem('entries')) || [];
+// }
+
 // shared.js
 
-// Function to save an entry to local storage with the current date
-function saveEntry(entryText) {
-    const currentDate = new Date().toLocaleDateString();
-    const entry = { date: currentDate, content: entryText };
+const express = require("express");
+const app = express();
+const bodyParser = require("body-parser");
+const db = require("./db");
 
-    // Get existing entries or initialize an empty array
-    const existingEntries = JSON.parse(localStorage.getItem('entries')) || [];
-
-    // Add the new entry to the array
-    existingEntries.push(entry);
-
-    // Save the updated entries array to local storage
-    localStorage.setItem('entries', JSON.stringify(existingEntries));
-}
-
-// Function to retrieve all entries from local storage
-function getEntries() {
-    return JSON.parse(localStorage.getItem('entries')) || [];
-}
-
-// shared.js
-
-const localStorageKey = 'entries';
-const sqlite3 = require('sqlite3').verbose();
-const mysql = require("mysql");
-
-// Set up SQLite database connection
-const sqliteDb = new sqlite3.Database('entries.db');
-
-// Set up MySQL database connection
-const mysqlDb = mysql.createConnection({
-    host: 'localhost',
-    database: 'diary',
-    user: 'root',
-    password: 'Mikaelson@12.'
-});
-
-// Connect to MySQL
-mysqlDb.connect(err => {
-    if (err) {
-        console.error('Error connecting to MySQL:', err.message);
-    } else {
-        console.log('Connected to MySQL');
-    }
-});
+// Middleware to parse incoming JSON data
+app.use(bodyParser.json());
 
 // Function to save an entry to both local storage and MySQL database
 function saveEntry(entryText) {
     const currentDate = new Date().toLocaleDateString();
     const entry = { date: currentDate, content: entryText };
 
-    // Save to local storage
-    const existingEntries = JSON.parse(localStorage.getItem(localStorageKey)) || [];
-    existingEntries.push(entry);
-    localStorage.setItem(localStorageKey, JSON.stringify(existingEntries));
-
     // Save to MySQL database
     const mysqlQuery = 'INSERT INTO entries (date, content) VALUES (?, ?)';
-    mysqlDb.query(mysqlQuery, [currentDate, entryText], (err, results) => {
+    db.query(mysqlQuery, [currentDate, entryText], (err, results) => {
         if (err) {
             console.error('Error inserting into MySQL:', err.message);
         } else {
@@ -67,12 +46,32 @@ function saveEntry(entryText) {
     });
 }
 
-// Function to retrieve all entries from local storage
-function getEntries() {
-    return JSON.parse(localStorage.getItem(localStorageKey)) || [];
-}
+// Express route to handle saving entries
+app.post('/saveEntry', (req, res) => {
+    const entryText = req.body.entryText;
+    if (entryText) {
+        saveEntry(entryText);
+        res.status(200).json({ message: 'Entry saved successfully.' });
+    } else {
+        res.status(400).json({ error: 'Invalid entry text.' });
+    }
+});
 
-// Export SQLite database for potential future use
-module.exports = sqliteDb;
+// Express route to retrieve all entries
+app.get('/getEntries', (req, res) => {
+    const mysqlQuery = 'SELECT * FROM entries ORDER BY date DESC';
+    db.query(mysqlQuery, (err, rows) => {
+        if (err) {
+            console.error('Error retrieving entries from MySQL:', err.message);
+            res.status(500).json({ error: 'Internal Server Error' });
+        } else {
+            res.status(200).json(rows);
+        }
+    });
+});
 
-
+// Start Express server
+const PORT = 3300;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
